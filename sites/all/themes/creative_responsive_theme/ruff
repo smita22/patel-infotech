@@ -1,0 +1,46 @@
+	echo "<pre>";print_r();exit();
+	
+	ctral + shift + n
+SMTP
+
+Publishing
+IMCE
+Nodequeue
+Revisioning
+
+SEO
+Global Redirect
+
+Users
+Captcha + Recaptcha done
+
+
+slack : smita@22
+mail : smita@hardik.22
+
+<a href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+<a href="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a> <a href="user/logout"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+<a href="<?php $GLOBALS['base_url']."cart"?>"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a> <a href="<?php $GLOBALS['base_url']."user/logout"?>"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+
+
+image_resize_filter-7.x-1.16
+max_image_size-7.x-1.5
+
+
+Client ID:	81hx22r1zfh1ju
+ 
+Client Secret:	11pIjmYqDdfMwfEo
+https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=81o9x8bz84tsgn&redirect_uri=http://localhost/sociallogin/
+
+linkedin password : hardik.22
+
+
+http://localhost/sociallogin/hybridauth/endpoint?hauth.done=LinkedIn
+http://localhost/sociallogin/hybridauth/endpoint?hauth.done=LinkedIn
+
+
+http://localhost/blog/public/login/linkedin/callback
+
+https://www.linkedin.com/oauth/v2/authorization?scope=r_basicprofile+r_emailaddress&response_type=code&state=Rli4dd7K2ShJFSacZml6yFAxi3Ipq2DyBftgewZw&client_id=81mabocx2odt5u&redirect_uri=http://localhost/blog/login/linkedin/callback
+
+jingpinpj
