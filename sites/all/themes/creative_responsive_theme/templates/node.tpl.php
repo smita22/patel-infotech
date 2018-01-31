@@ -109,7 +109,7 @@
     </footer>
   <?php endif; ?>
 
-  <?php print render($content['comments']); ?>
+  <?php //print render($content['comments']); ?>
 <?php if (!$page): ?>
   </article> <!-- /.node -->
 <?php endif; ?>

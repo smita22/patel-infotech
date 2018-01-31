@@ -8,6 +8,14 @@ stylesheets[all][] = media.css
 stylesheets[all][] = custom.css
 
 scripts[] = js/custom.js
+scripts[] = js/analytics.js
+scripts[] = js/api.js
+scripts[] = js/checkbox.js
+scripts[] = js/jQuery.print.js
+scripts[] = js/jquery-1.11.3.min.js
+scripts[] = js/jquery-ui.min.js
+scripts[] = js/scripts.js
+scripts[] = js/sitepath.js
 
 regions[header_top]     = Header Top
 regions[slideshow]      = Slideshow

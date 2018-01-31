@@ -1,4 +1,4 @@
-<?php //echo "<pre>";print_r($content);echo"</pre>";  ?>
+<?php // echo "<pre>";print_r($content);echo"</pre>";  ?>
 <?php drupal_add_css("themes/creative_responsive_theme/bootstrap.min.css");  ?>
 <div class="row">
   <div class="column" >
@@ -13,7 +13,7 @@
 
 <div class="tab">
   <button class="tablinks" onclick="openInformation(event, 'Specification')" id="defaultOpen">Product Specification</button>
-  <button class="tablinks" onclick="openInformation(event, 'Review')">Rating & Review</button>
+  <button class="tablinks" onclick="openInformation(event, 'Review')">Rating</button>
   
 </div>
 
@@ -26,7 +26,8 @@
 <div id="Review" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">x</span>
   <h3>Rating & Review</h3>
-  <?php //print "<pre>".$content['product:field_company_namelaptop']['#object']->field_laptop_specification['und']['0']['value'] ?>
+  <?php print_r($content['rate_fivestar']['#markup']); ?> 
+  
 </div>
 <script>
 // Get the element with id="defaultOpen" and click on it

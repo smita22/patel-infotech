@@ -5,6 +5,8 @@
         <group>
             <file>file:/D:/webroot/ecommerce/sites/all/themes/creative_responsive_theme/templates/page.tpl.php</file>
             <file>file:/D:/webroot/ecommerce/sites/all/themes/creative_responsive_theme/custom.css</file>
+            <file>file:/D:/webroot/ecommerce/sites/all/themes/creative_responsive_theme/js/sitepath.js</file>
+            <file>file:/D:/webroot/ecommerce/sites/all/themes/creative_responsive_theme/creative_responsive_theme.info</file>
             <file>file:/D:/webroot/ecommerce/sites/all/themes/creative_responsive_theme/templates/page--node--29.tpl.php</file>
         </group>
     </open-files>
