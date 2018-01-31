@@ -1,4 +1,4 @@
-<?php echo "<pre>";print_r($content);echo"</pre>";  ?>
+<?php //echo "<pre>";print_r($content);echo"</pre>";  ?>
 <?php drupal_add_css("themes/creative_responsive_theme/bootstrap.min.css");  ?>
 <div class="row">
   <div class="column" >
