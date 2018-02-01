@@ -67,7 +67,7 @@
 
 <div id="header_wrapper">
   <div id="inner_header_wrapper">
-
+<?php global $user; ?>
     <?php if (theme_get_setting('social_links', 'creative_responsive_theme')): ?>
       <div class="social-icons">
        <ul>
@@ -86,9 +86,19 @@
         <div id="site-description"><?php print $site_slogan; ?></div>
       </h1>	
 	
-		<?php if ($page['header_top']): ?>
-                        <?php global $base_url; ?>
-			<div class="headertop" ><a href="<?php print $base_url; ?>/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a> <a href="<?php print $base_url;?>/user/logout"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></div>
+	<?php if ($page['header_top']): ?>
+            <?php global $base_url; ?>
+            <!--<div class="headertop" ><a href="<?php //print $base_url; ?>/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a> <a href="<?php //print $base_url;?>/user/logout"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></div>-->
+         <a href="<?php $GLOBALS['base_url']."cart"?>"><img class="headertop" src="<?php print $base_url; ?>/sites/all/themes/creative_responsive_theme/images/cart-icon.jpg" style="width:50px; border-radius: 50%;padding: 10px"></a>
+         <div class="dropdown1 headertop">
+             <img id="myBtn" class="dropbtn headertop" src="<?php print $base_url; ?>/sites/all/themes/creative_responsive_theme/images/profile-image.png" style="width:50px; border-radius: 50%;">
+            
+            <div id="myDropdown" class="dropdown1-content">
+                <a href="<?php print $GLOBALS['base_url']."/user/".$user->uid."/edit"?>">My Profile</a>
+                <a href="<?php print $GLOBALS['base_url']."/user/logout"?>">Logout</a>
+                <a href="#contact"></a>
+            </div>
+        </div>
         <?php endif; ?>
 	 	
       <div class="clear"></div>
@@ -135,6 +145,7 @@
     <div class="content-sidebar-wrap">
 
     <div id="content">
+        
       <?php if (theme_get_setting('breadcrumbs', 'creative_responsive_theme')): ?><div id="breadcrumbs"><?php if ($breadcrumb): print $breadcrumb; endif;?></div><?php endif; ?>
       <section id="post-content" role="main">
         <?php print $messages; ?>
@@ -227,3 +238,69 @@
         </div>	
     </div>
 </div>
+<style>
+
+.dropbtn {
+    background-image: url("icons/settings-icon.png");
+            background: url(images/light-header.png);    
+            color: white;
+            padding: 10px;
+            font-size: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #5f5f5f;
+        }
+
+        .dropdown1 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown1-content {
+            display: none;
+            position: inherit;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        .dropdown1-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown1-content a:hover {background-color: #f1f1f1}
+
+        .show {display:block;}
+
+</style>
+<script>
+// Get the button, and when the user clicks on it, execute myFunction
+document.getElementById("myBtn").onclick = function() {myFunction()};
+
+/* myFunction toggles between adding and removing the show class, which is used to hide and show the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown1-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+</script>

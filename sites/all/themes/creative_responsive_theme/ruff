@@ -44,3 +44,20 @@ http://localhost/blog/public/login/linkedin/callback
 https://www.linkedin.com/oauth/v2/authorization?scope=r_basicprofile+r_emailaddress&response_type=code&state=Rli4dd7K2ShJFSacZml6yFAxi3Ipq2DyBftgewZw&client_id=81mabocx2odt5u&redirect_uri=http://localhost/blog/login/linkedin/callback
 
 jingpinpj
+
+<ul class="profile-wrapper">
+			<li>
+				<!-- user profile -->
+				<div class="profile">
+					<img src="http://gravatar.com/avatar/0e1e4e5e5c11835d34c0888921e78fd4?s=80" />
+					<a href="http://swimbi.com" class="name">swimbi.com</a>
+					
+					<!-- more menu -->
+					<ul class="menu">
+						<li><a href="#">Edit</a></li>
+						<li><a href="#">Change Password</a></li>
+						<li><a href="#">Log out</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>

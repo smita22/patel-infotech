@@ -1,11 +1,4 @@
-<?php
-$query = db_query("SELECT CONVERT(data USING utf8) FROM commerce_product WHERE type='component'");
-$result = $query->fetchAll();
-//echo "<pre>";print_r($result);
-//foreach ($result as $record) {
-//    print $record->type."<br";
-//}
-?>
+
 <style> 
     #container {
     clear: both;
@@ -92,6 +85,21 @@ $result = $query->fetchAll();
     <div class="content-sidebar-wrap">
 
     <div id="content">
+        <?php
+$query = db_query("SELECT CONVERT(data USING utf8) FROM commerce_product WHERE type='component'");
+$result = $query->fetchAll();
+//echo "<pre>";print_r($result);
+//foreach ($result as $record) {
+//    print $record->type."<br";
+//}
+
+$query = new EntityFieldQuery();
+$query->entityCondition('entity_type', 'commerce_product')
+   ->propertyCondition('type', 'component');
+ 
+$results = $query->execute();
+echo "<pre>";print_r($results);
+?>
       <?php if (theme_get_setting('breadcrumbs', 'creative_responsive_theme')): ?><div id="breadcrumbs"><?php if ($breadcrumb): print $breadcrumb; endif;?></div><?php endif; ?>
       <section id="post-content" role="main">
         <?php print $messages; ?>
