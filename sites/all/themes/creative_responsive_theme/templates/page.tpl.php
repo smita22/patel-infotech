@@ -89,7 +89,7 @@
 	<?php if ($page['header_top']): ?>
             <?php global $base_url; ?>
             <!--<div class="headertop" ><a href="<?php //print $base_url; ?>/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a> <a href="<?php //print $base_url;?>/user/logout"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></div>-->
-         <a href="<?php $GLOBALS['base_url']."cart"?>"><img class="headertop" src="<?php print $base_url; ?>/sites/all/themes/creative_responsive_theme/images/cart-icon.jpg" style="width:50px; border-radius: 50%;padding: 10px"></a>
+         <a href="<?php print $GLOBALS['base_url']."/cart"?>"><img class="headertop" src="<?php print $base_url; ?>/sites/all/themes/creative_responsive_theme/images/cart-icon.jpg" style="width:50px; border-radius: 50%;padding: 10px"></a>
          <div class="dropdown1 headertop">
              <img id="myBtn" class="dropbtn headertop" src="<?php print $base_url; ?>/sites/all/themes/creative_responsive_theme/images/profile-image.png" style="width:50px; border-radius: 50%;">
             
@@ -232,7 +232,7 @@
 		</div>	
             <?php endif; ?>
             <div id="copyright">
-                <p class="copyright"><?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?> </p> <p class="credits"> <?php print t('Theme by'); ?>  <a href="http://www.zymphonies.com">Zymphonies</a></p>
+                <p class="copyright"><?php print t('Copyright'); ?> &copy; <?php echo date("Y"); ?>, <?php print $site_name; ?>
                 <div class="clear"></div>
             </div>
         </div>	

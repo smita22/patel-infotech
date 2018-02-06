@@ -7,7 +7,19 @@
   <div class="column" >
     <h2 class="colorProductPage bottomLine"><?php print $content['product:commerce_price']['#object']->title ?></h2>
     <p><h3 class="colorProductPage bottomLine">Rs. <?php print $content['product:commerce_price']['#object']->commerce_price['und']['0']['amount'] / 100?></h3></p>
-    <p><h3 class="colorProductPage bottomLine">Warranty : <?php print $content['product:commerce_price']['#object']->field_warranty['und']['0']['value'] ?></h3></p>
+    <h3 class="colorProductPage bottomLine">Warranty : <?php print $content['product:commerce_price']['#object']->field_warranty['und']['0']['value'] ?></h3>
+    <p>
+        <h3 class="colorProductPage">
+            <?php 
+                $form_idp= commerce_cart_add_to_cart_form_id(array($content['product:commerce_price']['#object']->product_id));  
+                $productp = commerce_product_load($content['product:commerce_price']['#object']->product_id);
+                $line_itemp = commerce_product_line_item_new($productp, 1);  // 1 is quantity
+                $line_itemp->data['context']['product_ids'] = array($content['product:commerce_price']['#object']->product_id);
+                $formp = drupal_get_form($form_idp, $line_itemp);
+                print drupal_render($formp);
+            ?>
+        </h3>
+    </p>
   </div>
 </div>
 
@@ -26,7 +38,9 @@
 <div id="Review" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">x</span>
   <h3>Rating & Review</h3>
-  <?php //print "<pre>".$content['product:commerce_price']['#object']->field_laptop_specification['und']['0']['value'] ?>
+    <?php
+	print render($content['field_rating']); 
+    ?>
 </div>
 <script>
 // Get the element with id="defaultOpen" and click on it
