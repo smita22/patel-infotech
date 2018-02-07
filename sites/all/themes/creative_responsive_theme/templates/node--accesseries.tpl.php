@@ -1,6 +1,6 @@
 <?php //echo "<pre>";print_r($content['product:field_accessoriesimage']['#object']);echo"</pre>";  ?>
 <?php drupal_add_css("themes/creative_responsive_theme/bootstrap.min.css");  ?>
-<div class="row">
+<div class="row" style="padding-bottom: 40px;">
   <div class="column" >
     <img src="<?php print $GLOBALS['base_url']."/sites/default/files/".$content['product:field_accessoriesimage']['#object']->field_accessoriesimage['und']['0']['filename'] ?>" >
   </div>
@@ -11,12 +11,13 @@
     <p>
         <h3 class="colorProductPage">
             <?php 
-                $form_idp= commerce_cart_add_to_cart_form_id(array($content['product:field_accessoriesimage']['#object']->product_id));  
-                $productp = commerce_product_load($content['product:field_accessoriesimage']['#object']->product_id);
-                $line_itemp = commerce_product_line_item_new($productp, 1);  // 1 is quantity
-                $line_itemp->data['context']['product_ids'] = array($content['product:field_accessoriesimage']['#object']->product_id);
-                $formp = drupal_get_form($form_idp, $line_itemp);
-                print drupal_render($formp);
+//                $form_idp= commerce_cart_add_to_cart_form_id(array($content['product:field_accessoriesimage']['#object']->product_id));  
+//                $productp = commerce_product_load($content['product:field_accessoriesimage']['#object']->product_id);
+//                $line_itemp = commerce_product_line_item_new($productp, 1);  // 1 is quantity
+//                $line_itemp->data['context']['product_ids'] = array($content['product:field_accessoriesimage']['#object']->product_id);
+//                $formp = drupal_get_form($form_idp, $line_itemp);
+//                print drupal_render($formp);
+                print render($content['field_accesseries_product']);
             ?>
         </h3>
     </p>
