@@ -988,7 +988,7 @@ button.ui-checkbox span.ui-icon-check {
     font-size: 30px;
     line-height: 36px;
     padding-bottom: 20px;
-    color: #e31e24;
+    color: #666;
     font-weight: 700;
 }
 .page-title h1{
@@ -1659,7 +1659,7 @@ button.ui-checkbox span.ui-icon-check {
 }
 .byp-left{
     float: left;
-    background: #f5f5f5;
+    background: #ffffff;
     width: 195px;
     border: 1px solid #d5d5d5;
     margin-right: 35px;
@@ -1679,7 +1679,7 @@ button.ui-checkbox span.ui-icon-check {
     padding-left: 10px;
 }
 .byp-left ul li i{
-   color: #e31e24;
+   color: #593cc7;
     visibility: hidden;
 }
 .byp-left ul li button.ui-checkbox{
@@ -1695,7 +1695,7 @@ button.ui-checkbox span.ui-icon-check {
     line-height: 14px;
 }
 .byp-left ul li.active label{
-    color: #e31e24;
+    color: #593cc7 ;
 }
 .byp-left ul li.active i{
     visibility: visible;
@@ -1703,7 +1703,7 @@ button.ui-checkbox span.ui-icon-check {
 .byp-right{
     float: left;
     width: 916px;
-    background: #f5f5f5;
+    background: #ffffff;
     border: 1px solid #d5d5d5;
     padding-top: 15px;
 }

@@ -90,16 +90,7 @@
         <div class="content-sidebar-wrap">
 
             <div id="content">
-                <?php
-                    $nids = db_select('node', 'n')
-                            ->fields('n', array('nid'))
-                            ->condition('type', 'component', '=')
-                            ->execute()
-                            ->fetchCol();
-                    $nodes = node_load_multiple($nids);
-                    
-//                             echo "<pre>";print_r($nodes);
-                ?>
+                
                 <?php if (theme_get_setting('breadcrumbs', 'creative_responsive_theme')): ?><div id="breadcrumbs"><?php if ($breadcrumb): print $breadcrumb; endif;?></div><?php endif; ?>
                     <section id="post-content" role="main">
                         <?php print $messages; ?>
@@ -179,6 +170,18 @@
                                         </li>
                                     </ul>
                                 </div>
+                                <?php
+                                    $nids = db_select('node', 'n')
+                                            ->fields('n', array('nid'))
+                                            ->condition('type', 'component', '=')
+                                            ->execute()
+                                            ->fetchCol();
+                                    $nodes = node_load_multiple($nids);
+
+                                    $result = db_query("SELECT product_id FROM commerce_product WHERE type='component'");
+                                    $product_id = $result->fetchCol();
+                                    $products=commerce_product_load_multiple($product_id); 
+                                ?>
                                 <div class="byp-right cf">
                                     <div class="byp-selection">
                                         <div class="byp-section-title">Your Selection</div>
@@ -186,14 +189,28 @@
                                             <div class="byp-box cf" id="1">
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-6">
-                                                        <?php print render($content); 
-                                                            foreach ($nids as $nids) {
-                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '9'){
-                                                                    echo "<option value=''>".$nodes[$nids]->title."</option>";
+                                                        <option value="">Processor</option>
+                                                        <?php 
+                                                            print render($content); 
+                                                            foreach ($nids as $nids) 
+                                                            {
+                                                                $node_ProductId=$nodes[$nids]->field_product['und']['0']['product_id'];
+
+                                                                $product_ProductId=$products[$product_id]->product_id;
+
+                                                                $product = commerce_product_load($node_ProductId);
+                                                                $price = entity_metadata_wrapper('commerce_product', $product)->commerce_price->value();
+                                                                $product_price = $price['amount'] / 100;
+                                                                //echo "<pre>";print_r($product_price['amount'] / 100);
+
+                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '9')
+                                                                {
+                                                                    
+                                                                    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
                                                                 }
-//                                                                echo "<pre>"; print_r($nodes[$nids]->title);
-//                                                                print($nodes[$nids]->field_component ['und']['0']['tid']);
-                                                            }
+                                                                
                                                         ?>
                                                     </select>
                                                 </div>
@@ -204,16 +221,16 @@
                                             <div class="byp-box cf" id="2">
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-8">
+                                                        <option value="">Mother Board</option>
                                                         <?php print render($content); 
-                                                            foreach ($nids as $nids) {
-                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '10'){
-                                                                    echo "<option value=''>".$nodes[$nids]->title."</option>";
-                                                                }
-//                                                                echo "<pre>"; print_r($nodes[$nids]->title);
-//                                                                print($nodes[$nids]->field_component ['und']['0']['tid']);
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '10') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
                                                             }
                                                         ?>
-                                                        <option value="">Mother Board</option>
+                                                        
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -224,6 +241,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-9">
                                                         <option value="">Ram</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '11') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -234,6 +259,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-10">
                                                         <option value="">Hard Disc</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '12') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -244,8 +277,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-11">
                                                         <option value="">CD DVD Writer</option>
-                                                        <option value="22-950.00">CD DVD Writer LG SATA</option>
-                                                        <option value="24-1500.00">CD DVD Writer LG (USB)</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '16') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -256,6 +295,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-14">
                                                         <option value="">Cabinet</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '13') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -286,16 +333,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-15">
                                                         <option value="">Keyboard Mouse</option>
-                                                        <option value="28-800.00">Keyboard Mouse Logitech (MK200)</option>
-                                                        <option value="104-750.00">Keyboard Mouse HP (C2500)</option>
-                                                        <option value="105-2100.00">Keyboard TVSE GOLD USB</option>
-                                                        <option value="106-600.00">Keyboard Mouse I-ball (Wintop)</option>
-                                                        <option value="107-1450.00">Keyboard Mouse Logitech (MK260)</option>
-                                                        <option value="108-1300.00">Keyboard Mouse Dell (KM113)</option>
-                                                        <option value="109-400.00">Keyboard I-Ball Winner USB</option>
-                                                        <option value="110-400.00">Keyboard Mouse Intex (DUO-314)</option>
-                                                        <option value="111-330.00">Mouse Logitech (M100)</option>
-                                                        <option value="112-700.00">Mouse Logitech W/L (M185)</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '14') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -306,12 +351,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-13">
                                                         <option value="">LED Monitors</option>
-                                                        <option value="87-5000.00">LG LED 18.5 (19M38A)</option>
-                                                        <option value="88-9800.00">HP LED 22 (22ES)</option>
-                                                        <option value="89-8500.00">LG LED 22 (22MP48HQ)</option>
-                                                        <option value="90-5600.00">Dell LED 18.5 (E1916HV)</option>
-                                                        <option value="91-10750.00">Dell LED 22 (S2216H)</option>
-                                                        <option value="183-4250.00">LG LED 15.6" (16M38A)</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '23') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -322,6 +369,14 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-12">
                                                         <option value="">Graphics Cards</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '17') 
+                                                            {
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -332,15 +387,15 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-17">
                                                         <option value="">Antivirus</option>
-                                                        <option value="31-480.00">Antivirus NPAV</option>
-                                                        <option value="92-1331.00">Quick Heal Total Security 1 User 1 Year</option>
-                                                        <option value="93-5269.00">Quick Heal Total Security 3 User 3 Year</option>
-                                                        <option value="94-1007.00">Quick Heal Internet Security 1 User 1 Year</option>
-                                                        <option value="95-3872.00">Quick Heal Internet Security 3 User 3 Year</option>
-                                                        <option value="96-12087.00">Quick Heal Total Security 10 User 3 Year</option>
-                                                        <option value="97-600.00">Kaspersky Internet Security 1User 1Year</option>
-                                                        <option value="98-290.00">Antivirus Guardian 1 User 1 Year</option>
-                                                        <option value="99-2636.00">Quick Heal Total Security 3 User 1 Year</option>
+                                                        <?php print render($content); 
+                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '21') 
+                                                            {
+                                                                for($i=0;$i>5;$i){}
+                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                    echo $nodes[$nids]->title;
+//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
@@ -364,10 +419,15 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-16">
                                                         <option value="">Speakers</option>
-                                                        <option value="30-2750.00">Speaker F&amp;D 2.1 (A140F)</option>
-                                                        <option value="150-600.00">Speaker I-Ball (i2-460)</option>
-                                                        <option value="151-550.00">Speaker I-Ball (Sound Wave)</option>
-                                                        <option value="156-2100.00">Speaker I-Ball (Seetara B1)</option>
+                                                        <?php print render($content); 
+                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '19') 
+                                                                {
+                                                                    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+    //                                                                    echo $nodes[$nids]->title;
+    //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                                }
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                                 <div class="byp-number">
