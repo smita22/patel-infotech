@@ -122,11 +122,44 @@
 </div>		
   
   <div id="container">
+     
+    <?php  echo current_path(); if(current_path() == "laptops" || current_path() == "sortLaptopAsc" || current_path() == "sortalLaptopDes"): ?>
+      <i style="float: right">
+          <select id="Laptopsort" onchange="OnSelectionChange()">
+              <option>Filter</option>
+              <option value="acs">Lower to Higher</option>
+              <option value="dec">Higher to Lower</option>
+          </select>
+         
+      </i>
 
+    <?php endif; ?>
+    <?php  if(current_path() == "accessories " || current_path() == "sortallAccessoriesAsc" || current_path() == "sortallAccessorieDes"): ?>
+      <i style="float: right">
+          <select id="Laptopsort" onchange="OnSelectionChangeAss()">
+              <option>Filter</option>
+              <option value="acs">Lower to Higher</option>
+              <option value="dec">Higher to Lower</option>
+          </select>
+         
+      </i>
+
+    <?php endif; ?>
+    <?php  if(current_path() == "components" || current_path() == "sortallAccessoriesAsc" || current_path() == "sortallAccessorieDes"): ?>
+      <i style="float: right">
+          <select id="Laptopsort" onchange="OnSelectionChangeComponents()">
+              <option>Filter</option>
+              <option value="acs">Lower to Higher</option>
+              <option value="dec">Higher to Lower</option>
+          </select>
+         
+      </i>
+
+    <?php endif; ?>
     <?php if ($is_front): ?>
       <?php print render($page['slideshow']); ?>
        <!-- Banner -->
-
+ 
        <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?> 
         <div id="top-area" class="clearfix">
           <?php if ($page['top_first']): ?>
@@ -136,7 +169,7 @@
           <div class="column"><?php print render($page['top_second']); ?></div>
           <?php endif; ?>
           <?php if ($page['top_third']): ?>
-          <div class="column"><?php print render($page['top_third']); ?></div>
+          <div class="column" style="float: right"><?php print render($page['top_third']); ?></div>
           <?php endif; ?>
         </div>
       <?php endif; ?>
@@ -238,6 +271,53 @@
         </div>	
     </div>
 </div>
+<script>
+    function OnSelectionChange()
+    {
+    //    Laptopsort;
+        var e = document.getElementById("Laptopsort");
+        var value = e.options[e.selectedIndex].value;
+        var baseurl = location.href.substr(0, location.href.lastIndexOf("/") + 1);
+        if(value == "acs")
+        {
+            window.location = baseurl + "sortLaptopAsc";
+        }
+        else
+        {
+            window.location = baseurl + "sortalLaptopDes";
+        }
+    }
+    function OnSelectionChangeAss()
+    {
+    //    Laptopsort;
+        var e = document.getElementById("Laptopsort");
+        var value = e.options[e.selectedIndex].value;
+        var baseurl = location.href.substr(0, location.href.lastIndexOf("/") + 1);
+        if(value == "acs")
+        {
+            window.location = baseurl + "sortallAccessoriesAsc";
+        }
+        else
+        {
+            window.location = baseurl + "sortallAccessorieDes";
+        }
+    }
+    function OnSelectionChangeComponents()
+    {
+    //    OnSelectionChangeComponents;
+        var e = document.getElementById("Laptopsort");
+        var value = e.options[e.selectedIndex].value;
+        var baseurl = location.href.substr(0, location.href.lastIndexOf("/") + 1);
+        if(value == "acs")
+        {
+            window.location = baseurl + "sortallComponentAsc";
+        }
+        else
+        {
+            window.location = baseurl + "sortallAccessorieDes";
+        }
+    }
+</script>
 <style>
 
 .dropbtn {

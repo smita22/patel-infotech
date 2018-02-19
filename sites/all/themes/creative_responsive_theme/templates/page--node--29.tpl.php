@@ -181,6 +181,29 @@
                                     $result = db_query("SELECT product_id FROM commerce_product WHERE type='component'");
                                     $product_id = $result->fetchCol();
                                     $products=commerce_product_load_multiple($product_id); 
+                                    function fillValues($value)
+                                    { 
+                                        if($value == 'PROCESSOR')
+                                        {
+                                            foreach ($nids as $nids) 
+                                            {
+                                                $node_ProductId=$nodes[$nids]->field_product['und']['0']['product_id'];
+
+                                                $product_ProductId=$products[$product_id]->product_id;
+
+                                                $product = commerce_product_load($node_ProductId);
+                                                $price = entity_metadata_wrapper('commerce_product', $product)->commerce_price->value();
+                                                $product_price = $price['amount'] / 100;
+                                                //echo "<pre>";print_r($product_price['amount'] / 100);
+                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '9')
+                                                {
+                                                    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                }
+                                                
+                                            }
+                                        }
+                                    }
                                 ?>
                                 <div class="byp-right cf">
                                     <div class="byp-selection">
@@ -192,25 +215,7 @@
                                                         <option value="">Processor</option>
                                                         <?php 
                                                             print render($content); 
-                                                            foreach ($nids as $nids) 
-                                                            {
-                                                                $node_ProductId=$nodes[$nids]->field_product['und']['0']['product_id'];
-
-                                                                $product_ProductId=$products[$product_id]->product_id;
-
-                                                                $product = commerce_product_load($node_ProductId);
-                                                                $price = entity_metadata_wrapper('commerce_product', $product)->commerce_price->value();
-                                                                $product_price = $price['amount'] / 100;
-                                                                //echo "<pre>";print_r($product_price['amount'] / 100);
-
-                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '9')
-                                                                {
-                                                                    
-                                                                    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
-//                                                                    echo $nodes[$nids]->title;
-//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                                }
-                                                                
+                                                            fillValues("PROCESSOR");    
                                                         ?>
                                                     </select>
                                                 </div>
@@ -223,12 +228,14 @@
                                                     <select id="cat-8">
                                                         <option value="">Mother Board</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '10') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
-//                                                                    echo $nodes[$nids]->title;
-//                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                            
+                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '10') 
+                                                                {
+                                                                    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+    //                                                                    echo $nodes[$nids]->title;
+    //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
+                                                                }
+                                                            
                                                         ?>
                                                         
                                                     </select>
@@ -242,12 +249,12 @@
                                                     <select id="cat-9">
                                                         <option value="">Ram</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '11') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                            //if($nodes[$nids]->field_component ['und']['0']['tid'] == '11') 
+                                                         //   {
+                                                         //       echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                         //   }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -260,12 +267,12 @@
                                                     <select id="cat-10">
                                                         <option value="">Hard Disc</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '12') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                            //if($nodes[$nids]->field_component ['und']['0']['tid'] == '12') 
+                                                            //{
+                                                             //   echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                           // }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -278,12 +285,12 @@
                                                     <select id="cat-11">
                                                         <option value="">CD DVD Writer</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '16') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                         //   if($nodes[$nids]->field_component ['und']['0']['tid'] == '16') 
+                                                          //  {
+                                                          //      echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                          //  }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -296,12 +303,12 @@
                                                     <select id="cat-14">
                                                         <option value="">Cabinet</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '13') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                            //if($nodes[$nids]->field_component ['und']['0']['tid'] == '13') 
+                                                           // {
+                                                            //    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                          //  }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -334,12 +341,12 @@
                                                     <select id="cat-15">
                                                         <option value="">Keyboard Mouse</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '14') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                           // if($nodes[$nids]->field_component ['und']['0']['tid'] == '14') 
+                                                           // {
+                                                            //    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                           //}
                                                         ?>
                                                     </select>
                                                 </div>
@@ -352,12 +359,12 @@
                                                     <select id="cat-13">
                                                         <option value="">LED Monitors</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '23') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                            //if($nodes[$nids]->field_component ['und']['0']['tid'] == '23') 
+                                                            //{
+                                                            //    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                          //  }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -370,12 +377,12 @@
                                                     <select id="cat-12">
                                                         <option value="">Graphics Cards</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '17') 
-                                                            {
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
-//                                                                    echo $nodes[$nids]->title;
+                                                           // if($nodes[$nids]->field_component ['und']['0']['tid'] == '17') 
+                                                           // {
+                                                          //      echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+//                                                                   echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                          //  }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -388,13 +395,13 @@
                                                     <select id="cat-17">
                                                         <option value="">Antivirus</option>
                                                         <?php print render($content); 
-                                                            if($nodes[$nids]->field_component ['und']['0']['tid'] == '21') 
-                                                            {
-                                                                for($i=0;$i>5;$i){}
-                                                                echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                           // if($nodes[$nids]->field_component ['und']['0']['tid'] == '21') 
+                                                           // {
+                                                           //     for($i=0;$i>5;$i){}
+                                                          //      echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
 //                                                                    echo $nodes[$nids]->title;
 //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                            }
+                                                        //    }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -406,7 +413,7 @@
                                                 <div class="byp-input dropdown">
                                                     <select id="cat-18">
                                                         <option value="">UPS</option>
-                                                        <option value="32-2500.00">UPS APC (600VA)</option>
+                                                        <option value="89-2500.00">UPS APC (600VA)</option>
                                                         <option value="83-1950.00">UPS I-ball Nirantar-621 (600 VA)</option>
                                                         <option value="84-1800.00">UPS Intex Protector 725</option>
                                                     </select>
@@ -420,13 +427,13 @@
                                                     <select id="cat-16">
                                                         <option value="">Speakers</option>
                                                         <?php print render($content); 
-                                                                if($nodes[$nids]->field_component ['und']['0']['tid'] == '19') 
-                                                                {
-                                                                    echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
+                                                                //if($nodes[$nids]->field_component ['und']['0']['tid'] == '19') 
+                                                                //{
+                                                                  //  echo "<option value='".$product_price."'>".$nodes[$nids]->title."</option>";
     //                                                                    echo $nodes[$nids]->title;
     //                                                                    echo $product_ProductId."  ". $product_price ."<br>"; 
-                                                                }
-                                                            }
+                                                              //  }
+                                                            //}
                                                         ?>
                                                     </select>
                                                 </div>
