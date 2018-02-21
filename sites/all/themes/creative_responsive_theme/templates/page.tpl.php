@@ -123,7 +123,7 @@
   
   <div id="container">
      
-    <?php  echo current_path(); if(current_path() == "laptops" || current_path() == "sortLaptopAsc" || current_path() == "sortalLaptopDes"): ?>
+    <?php if(current_path() == "laptops" || current_path() == "sortLaptopAsc" || current_path() == "sortalLaptopDes"): ?>
       <i style="float: right">
           <select id="Laptopsort" onchange="OnSelectionChange()">
               <option>Filter</option>
@@ -145,7 +145,7 @@
       </i>
 
     <?php endif; ?>
-    <?php  if(current_path() == "components" || current_path() == "sortallAccessoriesAsc" || current_path() == "sortallAccessorieDes"): ?>
+    <?php  if(current_path() == "components" || current_path() == "sortallComponentAsc" || current_path() == "sortallComponentDec"): ?>
       <i style="float: right">
           <select id="Laptopsort" onchange="OnSelectionChangeComponents()">
               <option>Filter</option>
@@ -310,11 +310,11 @@
         var baseurl = location.href.substr(0, location.href.lastIndexOf("/") + 1);
         if(value == "acs")
         {
-            window.location = baseurl + "sortallComponentAsc";
+            window.location = baseurl + "sortallComponentAsc ";
         }
         else
         {
-            window.location = baseurl + "sortallAccessorieDes";
+            window.location = baseurl + "sortallComponentDec";
         }
     }
 </script>
