@@ -369,8 +369,15 @@ audio {
 }
 
 #logo {
+  /*float:left;*/
+  margin: 25px 10px;
+}
+
+#logo a img {
   float:left;
   margin: 25px 10px;
+  height: 5%;
+  width: 8%;
 }
 
 #site-title a,
@@ -393,6 +400,7 @@ audio {
 #site-title a{
   float: left;
   line-height: 100%;
+  padding-top: 30px;
 }
 
 #site-description {

@@ -15,6 +15,7 @@
     box-shadow: 0px 2px 18px rgb(221, 221, 221);
 }
 </style>
+
 <div id="header_wrapper">
     <div id="inner_header_wrapper">
         <?php if (theme_get_setting('social_links', 'creative_responsive_theme')): ?>
@@ -70,6 +71,24 @@
 </div>		
   
 <div id="container">
+    <?php
+        
+        $key = 'modulename_feedback_form_submit';
+        $to = "queensmita2012@gmail.com";
+        $from = "queensmita2012@gmail.com";
+        $params = "gcf";
+        $language = language_default();
+        $send = TRUE;
+        $result = drupal_mail( $key, $to, $language, $params, $from, $send);
+
+        if ($result['result'] == TRUE) {
+          drupal_set_message(t('Your message has been sent.'));
+        }
+        else {
+          drupal_set_message(t('There was a problem sending your message and it was not sent.'), 'error');
+        }
+
+?>
     <?php if ($is_front): ?>
         <?php print render($page['slideshow']); ?>
             <?php if ($page['top_first'] || $page['top_second'] || $page['top_third']): ?> 
@@ -183,6 +202,7 @@
                                     $products=commerce_product_load_multiple($product_id); 
                                     
                                 ?>
+                                <form method="post" name="buildPcData" action="">
                                 <div class="byp-right cf">
                                     <div class="byp-selection">
                                         <div class="byp-section-title">Your Selection</div>
@@ -603,6 +623,7 @@
                                         <div class="success-message byp" id="byp-msg">Thank you for trying our service. Visit our branch to get delivery!!!</div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </section> <!-- /#main -->

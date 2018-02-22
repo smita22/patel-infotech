@@ -1,5 +1,17 @@
 <?php
 
+function creative_responsive_them($existing, $type, $theme, $path) {
+
+    echo"<pre>";print_r($path);    exit();
+    $items['story_node_form'] = array(
+        'render element' => 'form',
+        'template' => 'node-edit--story',
+        'path' => drupal_get_path('theme', 'mytheme') . '/template/form',
+    );
+
+    return $items;
+}
+
 function creative_responsive_theme_node_submitted($node) {
   return t('Published on !datetime',
     array(
